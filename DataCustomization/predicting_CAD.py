@@ -13,7 +13,7 @@ list_gold = []
 list_tsx_modified = []
 list_normalized = []
 
-file = open("C:\\Users\\PC\\Desktop\\draft.txt", "r+")
+file = open("draft.txt", "r+")
 line = file.readline()
 while line:
     if re.search(r"\ADec|\ANov",line):
@@ -78,7 +78,7 @@ for i in range(0, size - 8):
 print(list_normalized)
 file.close()
 
-dataFile = open("C:\\Users\\PC\\Desktop\\dataset.txt", "a+")
+dataFile = open("dataset.txt", "a+")
 for dataset in list_normalized:
     dataFile.write("%s\n" % str(dataset))
 
