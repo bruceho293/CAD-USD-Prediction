@@ -1,12 +1,6 @@
 import re
 from decimal import Decimal
 
-# print(file.read())
-# while line :
-#     print('Line %d: %s' % (i, line.strip()))
-#     line = file.readline()
-#     i = i + 1
-
 list_cad_usd = []
 list_tsx = []
 list_gold = []
@@ -28,15 +22,6 @@ while line:
         list_gold.append(line.replace("\n", ''))
     line = file.readline()
 
-
-# print(list_tsx)
-# print(list_cad_usd)
-# print(list_gold)
-
-# print(len(list_cad_usd))
-# print(len(list_tsx))
-# print(len(list_gold))
-
 size = len(list_cad_usd)
 
 for smallList in list_tsx:
@@ -49,10 +34,6 @@ for smallList in list_tsx:
 for i in range(0, size):
     list_cad_usd[i] = float(list_cad_usd[i])
     list_gold[i] = float(list_gold[i])
-
-# print(list_tsx_modified)
-# print(list_cad_usd)
-# print(list_gold)
 
 for i in range(0, size - 8):
     if i >= 2:
