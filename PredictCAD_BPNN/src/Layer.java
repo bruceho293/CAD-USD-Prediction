@@ -8,14 +8,17 @@ public class Layer {
 		this.layer = new ArrayList<Neuron>();
 	}
 	
+	// Add a Neuron to this Layer.
 	public void addNeuron(Neuron n) {
 		this.layer.add(n);
 	}
 	
+	// Return the number of Neurons that this Layer has.
 	public int size() {
 		return this.layer.size();
 	}
 	
+	// Return a list of weights associated with each existing Neuron in this Layer.
 	public List<Double> getWeights(){
 		List<Double> result = new ArrayList<Double>();
 		for (Neuron n: layer) {
@@ -26,7 +29,7 @@ public class Layer {
 		return result;
 	}
 	
-	
+	// Return a specific Neuron in this Layer.
 	public Neuron getNeuron(int index) {
 		return layer.get(index);
 	}

@@ -40,13 +40,15 @@ public class BackPropagationNeuronNetwork {
 		return this.errorAcceptance;
 	}
 	
+	// Adding the input Layer with the size "size".
 	public void addInputLayer(int size) {
 		for(int i = 0; i < size; i ++) {
 			Neuron neuron = new Neuron(0, 0);
 			inputLayer.addNeuron(neuron);
 		}
 	}
-	
+
+	// Adding the output Layer with the size "size".
 	public void addOutputLayer(int size) {
 		for(int i = 0; i < size; i ++) {
 			Neuron neuron = new Neuron(0, 0);
@@ -54,6 +56,7 @@ public class BackPropagationNeuronNetwork {
 		}
 	}
 	
+	// Adding the hidden Layer with the size "size".
 	public void addHiddenLayer(int size) {
 		Layer layer = new Layer();
 		for (int i = 0; i < size; i ++)
@@ -61,6 +64,8 @@ public class BackPropagationNeuronNetwork {
 		hiddenLayers.add(layer);
 	}
 	
+	// Adding a list of inputs to the input Layer.
+	// Each input will be stored in one Neuron.
 	public void addInputNeurons(List<Double> inputs) {
 		if (inputs.size() == inputLayer.size()) {
 			for (int i = 0; i < inputs.size(); i ++) {
@@ -69,6 +74,7 @@ public class BackPropagationNeuronNetwork {
 		}
 	}
 	
+	// Returns a string representation of all weights in the network.
 	public String getWeights() {
 		String text = "";
 		for(int i = 0; i < total().size() - 1; i ++){
@@ -77,6 +83,7 @@ public class BackPropagationNeuronNetwork {
 		return text;
 	}
 	
+	// Return a list of all Layers in the network.
 	private List<Layer> total(){
 		List<Layer> totalLayers = new ArrayList<Layer>();
 		totalLayers.add(inputLayer);
@@ -85,10 +92,10 @@ public class BackPropagationNeuronNetwork {
 		return totalLayers;
 	}
 	
+	/** Each bottom layer will store the neuron in the upper layer
+	 * 	together with the associated weight.		
+	*/
 	public void assigningWeight() {
-		/** Each bottom layer will store the neuron in the upper layer
-		 * 	together with the associated weight.		
-		*/
 		List<Layer> totalLayers = total();
 		int counter = 1;
 		while (counter < totalLayers.size()) {
@@ -105,6 +112,7 @@ public class BackPropagationNeuronNetwork {
 		}
 	}
 	
+	// Forward Backpropagation
 	public void forwardPropogation() {
 		List<Layer> totalLayers = total();
 		int counter = 1;
@@ -124,6 +132,7 @@ public class BackPropagationNeuronNetwork {
 		}
 	}
 	
+	//Calculate the error in the output Layer.
 	public void calculateError(double[] expectedOutput) {
 		if (expectedOutput.length == outputLayer.size()) {
 			for (int i = 0; i < outputLayer.size(); i++) {
@@ -138,6 +147,7 @@ public class BackPropagationNeuronNetwork {
 			System.out.println("Error");
 	}
 	
+	// Propagate back the errors throughout the entire network.
 	public void errorBackPropagation() {
 		List<Layer> totalLayers = total();		
 		int counter = totalLayers.size() - 2;
@@ -163,6 +173,8 @@ public class BackPropagationNeuronNetwork {
 		}
 	}
 	
+	// Adjust the associated weight of the Neuron "current" in each Neuron
+	// in the Layer "bottom".
 	public void adjustWeight(Neuron current, Layer bottom) {
 		for(int i = 0; i < bottom.size(); i ++) {
 			Neuron n = bottom.getNeuron(i);

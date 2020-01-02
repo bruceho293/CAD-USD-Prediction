@@ -106,6 +106,7 @@ public class TrainingTester {
 		network.addOutputLayer(1);
 		network.assigningWeight();
 		
+		// Begin the training.
 		int trial = 0;
 		while (network.getError() == 0 || network.getError() > network.getExpectedError()) {
 			System.out.println("Trial " + trial + ": ");
