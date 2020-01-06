@@ -11,3 +11,4 @@ Drawbacks:
 + The network seems to be only capable of predicting the absolute value of the dollar change; therefore does not specify if the dollar will increase or decrease. This is the result from using the sigmoid function as the activation function which returns a value between 0 and 1. Some modifications are needed to overcome this issue.
 
 Image showing the outcome:
+![Output](/images/output.png)
